@@ -11,7 +11,7 @@ namespace UTorri.Commands
     {
         private const string ActionPriority = "?action=setprio";
 
-        public PriorityQueryCommand(FileList fileList)
+        public PriorityQueryCommand(TorrentFileList fileList)
             : base(ActionPriority, CommandType.Action)
         {
             Parameters = CreateQueryString(fileList.ToArray());

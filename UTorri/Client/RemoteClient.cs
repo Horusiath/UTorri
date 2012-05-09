@@ -124,12 +124,12 @@ namespace UTorri.Client
         /// </summary>
         /// <param name="callback"></param>
         /// <param name="torrents"></param>
-        public void GetTorrentFiles(Action<FileList> callback, params Torrent[] torrents)
+        public void GetTorrentFiles(Action<TorrentFileList> callback, params Torrent[] torrents)
         {
             var command = new TorrentFilesQueryCommand(torrents);
             Connection.GetAsync(command, (json)=>
                                              {
-                                                 var res = ResponseFactory.Get<FileList>(json);
+                                                 var res = ResponseFactory.Get<TorrentFileList>(json);
                                                  callback(res);
                                              });
         }
@@ -226,7 +226,7 @@ namespace UTorri.Client
         /// Set torrent priorities passed by target FileList object.
         /// </summary>
         /// <param name="list"></param>
-        public void SetTorrentPriority(FileList list)
+        public void SetTorrentPriority(TorrentFileList list)
         {
             var command = new PriorityQueryCommand(list);
             Connection.GetAsync(command,null);

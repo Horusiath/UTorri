@@ -64,7 +64,7 @@
     <Compile Include="Connection\HttpRemoteConnection.cs" />
     <Compile Include="Connection\RemoteConnectionException.cs" />
     <Compile Include="Connection\TokenException.cs" />
-    <Compile Include="FileList.cs" />
+    <Compile Include="TorrentFileList.cs" />
     <Compile Include="IJsonFillable.cs" />
     <Compile Include="MergeConflictException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

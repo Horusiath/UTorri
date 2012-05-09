@@ -6,15 +6,15 @@ namespace UTorri
     /// <summary>
     /// List of torrent files.
     /// </summary>
-    public class FileList : RequestResult, ICollection<TorrentFile>
+    public class TorrentFileList : RequestResult, ICollection<TorrentFile>
     {
         private readonly IList<TorrentFile> _files = new List<TorrentFile>();
 
-        public FileList()
+        public TorrentFileList()
         {
         }
 
-        public FileList(string json)
+        public TorrentFileList(string json)
         {
             this.FromJson(json);
         }
