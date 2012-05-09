@@ -16,12 +16,12 @@ namespace UTorri
         /// <summary>
         /// Gets checksum identifier of associated torrent.
         /// </summary>
-        public string Checksum { get; protected set; }
+        public string Hash { get; protected set; }
 
         /// <summary>
         /// Gets torrent file name.
         /// </summary>
-        public string Name { get; protected set; }
+        public string FileName { get; protected set; }
 
         /// <summary>
         /// Gets file size.
@@ -31,7 +31,7 @@ namespace UTorri
         /// <summary>
         /// Gets received number of bytes of current file.
         /// </summary>
-        public int Received { get; protected set; }
+        public int Downloaded { get; protected set; }
 
         private Priority _priority;
         /// <summary>
@@ -55,14 +55,14 @@ namespace UTorri
         /// <param name="checksum"></param>
         public TorrentFile(string checksum)
         {
-            this.Checksum = checksum;
+            this.Hash = checksum;
         }
 
         /// <summary>
         /// Creates new instance of torrent file for specified torrent.
         /// </summary>
         /// <param name="parent"></param>
-        public TorrentFile(Torrent parent) : this(parent.Checksum)
+        public TorrentFile(Torrent parent) : this(parent.Hash)
         {
         }
 
@@ -73,9 +73,9 @@ namespace UTorri
         internal void FillData(IEnumerable<object> data)
         {
             var array = data.ToArray();
-            Name = array[0].ToString();
+            FileName = array[0].ToString();
             FileSize = (int) array[1];
-            Received = (int) array[2];
+            Downloaded = (int) array[2];
             _priority = (Priority) array[3];
         }
     }

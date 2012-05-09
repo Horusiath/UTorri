@@ -8,7 +8,7 @@ namespace UTorri
     /// <summary>
     /// Torrent task properties class.
     /// </summary>
-    public class TaskProperties : RequestResult
+    public class TorrentJobProperties : RequestResult
     {
         private IDictionary<string, string> _changedValues;
         /// <summary>
@@ -25,7 +25,7 @@ namespace UTorri
         /// <summary>
         /// Checksum identifier of associated torrent.
         /// </summary>
-        public string Checksum { get; private set; }
+        public string Hash { get; private set; }
 
         private ICollection<string> _trackers;
         /// <summary>
@@ -69,17 +69,17 @@ namespace UTorri
             }
         }
 
-        private TaskPropertyState _startSeeding;
+        private TaskPropertyState _initialSeeding;
         /// <summary>
         /// Gets or sets Super-Seeding/Initial seeding option.
         /// </summary>
-        public TaskPropertyState StartSeeding
+        public TaskPropertyState InitialSeeding
         {
-            get { return _startSeeding; }
+            get { return _initialSeeding; }
             set
             {
-                _startSeeding = value;
-                ChangeValue("superseed", ((int)_startSeeding).ToString());
+                _initialSeeding = value;
+                ChangeValue("superseed", ((int)_initialSeeding).ToString());
             }
         }
 
@@ -87,7 +87,7 @@ namespace UTorri
         /// <summary>
         /// Gets or sets Distributed Hash Table usage option.
         /// </summary>
-        public TaskPropertyState Dht
+        public TaskPropertyState UseDht
         {
             get { return _dht; }
             set
@@ -101,7 +101,7 @@ namespace UTorri
         /// <summary>
         /// Gets or sets Peer Exchange Protocol usage option.
         /// </summary>
-        public TaskPropertyState Pex
+        public TaskPropertyState UsePex
         {
             get { return _pex; }
             set
@@ -115,7 +115,7 @@ namespace UTorri
         /// <summary>
         /// Gets or sets seed override option.
         /// </summary>
-        public TaskPropertyState SeedOverride
+        public TaskPropertyState OverrideQueueing
         {
             get { return _seedOverride; }
             set
@@ -143,7 +143,7 @@ namespace UTorri
         /// <summary>
         /// Gets or sets maximum seed time.
         /// </summary>
-        public TimeSpan SeedTime
+        public TimeSpan SeedingTime
         {
             get { return _seedTime; }
             set
@@ -167,12 +167,12 @@ namespace UTorri
             }
         }
 
-        public TaskProperties()
+        public TorrentJobProperties()
         {
             _changedValues = new Dictionary<string, string>();
         }
 
-        public TaskProperties(string json)
+        public TorrentJobProperties(string json)
             : this()
         {
             this.FromJson(json);
@@ -193,11 +193,11 @@ namespace UTorri
         public override void FromJson(string json)
         {
             var obj = JsonConvert.DeserializeObject<TorrentTaskRawJson>(json);
-            this.Checksum = obj.hash;
+            this.Hash = obj.hash;
             this._trackers = obj.trackers.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             this._uploadLimit = obj.ulrate;
             this._downloadLimit = obj.dlrate;
-            this._startSeeding = (TaskPropertyState) obj.superseed;
+            this._initialSeeding = (TaskPropertyState) obj.superseed;
             this._dht = (TaskPropertyState) obj.dht;
             this._pex = (TaskPropertyState) obj.pex;
             this._seedOverride = (TaskPropertyState) obj.seed_override;

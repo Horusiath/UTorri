@@ -139,13 +139,13 @@ namespace UTorri.Client
         /// </summary>
         /// <param name="callback"></param>
         /// <param name="torrents"></param>
-        public void GetTorrentProperties(Action<TaskProperties> callback,
+        public void GetTorrentProperties(Action<TorrentJobProperties> callback,
             params Torrent[] torrents)
         {
             var command = new TaskPropertyQueryCommand(torrents);
             Connection.GetAsync(command, (json)=>
             {
-                var res = ResponseFactory.Get<TaskProperties>(json);
+                var res = ResponseFactory.Get<TorrentJobProperties>(json);
                 callback(res);
             });
         }
@@ -154,7 +154,7 @@ namespace UTorri.Client
         /// Creates asynchronous request for setting target torrents properties.
         /// </summary>
         /// <param name="properties"></param>
-        public void SetTorrentProperties(params TaskProperties[] properties)
+        public void SetTorrentProperties(params TorrentJobProperties[] properties)
         {
             var command = new TaskPropertyQueryCommand(properties);
             Connection.GetAsync(command, null);

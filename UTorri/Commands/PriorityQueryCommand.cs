@@ -26,7 +26,7 @@ namespace UTorri.Commands
         {
             var changed = (from f in files
                            where f.PriorityChanged
-                           group f by f.Checksum
+                           group f by f.Hash
                            into g
                            select new
                            {

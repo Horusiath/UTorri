@@ -19,7 +19,7 @@ namespace UTorri.Commands
             :base(GetActionName,CommandType.Action)
         {
             Parameters = torrents
-                .Select(t => new KeyValuePair<string, string>("hash", t.Checksum));
+                .Select(t => new KeyValuePair<string, string>("hash", t.Hash));
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace UTorri.Commands
         /// Change sets are saved as they were during constructor call.
         /// </summary>
         /// <param name="torrentTasks"></param>
-        public TaskPropertyQueryCommand(params TaskProperties[] torrentTasks)
+        public TaskPropertyQueryCommand(params TorrentJobProperties[] torrentTasks)
             :base(SetActionName, CommandType.Action)
         {
             var list = new List<KeyValuePair<string, string>>();
@@ -44,9 +44,9 @@ namespace UTorri.Commands
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
-        private static IEnumerable<KeyValuePair<string ,string >> CreateQueryString(TaskProperties task)
+        private static IEnumerable<KeyValuePair<string ,string >> CreateQueryString(TorrentJobProperties task)
         {
-            return new[] {new KeyValuePair<string, string>("hash", task.Checksum)}
+            return new[] {new KeyValuePair<string, string>("hash", task.Hash)}
                 .Union(task.Changes);
         }
     }

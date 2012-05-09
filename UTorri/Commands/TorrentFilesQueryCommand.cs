@@ -24,7 +24,7 @@ namespace UTorri.Commands
         {
             AssociatedTorrents = torrents;
             Parameters = torrents
-                .Select(t => new KeyValuePair<string, string>("hash", t.Checksum));
+                .Select(t => new KeyValuePair<string, string>("hash", t.Hash));
         }
     }
 }

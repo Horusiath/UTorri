@@ -69,7 +69,7 @@ namespace UTorri.Client
         protected virtual void Initialize()
         {
             Register<FileList>(json => new FileList(json));
-            Register<TaskProperties>(json=> new TaskProperties(json));
+            Register<TorrentJobProperties>(json=> new TorrentJobProperties(json));
             Register<TorrentList>(json => new TorrentList(json));
         }
     }

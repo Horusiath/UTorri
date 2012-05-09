@@ -20,7 +20,7 @@ namespace UTorri
         /// <summary>
         /// Identifier of request associated with target list.
         /// </summary>
-        public long BufferIdentity { get; set; }
+        public long CacheId { get; set; }
 
         /// <summary>
         /// Creates new empty instance of TorrentList.
@@ -62,7 +62,7 @@ namespace UTorri
         /// <exception cref="MergeConfilcException">Thrown, when list have different BufferIdentity.</exception>
         public TorrentList Merge(TorrentList other)
         {
-            if (other.BufferIdentity != this.BufferIdentity)
+            if (other.CacheId != this.CacheId)
                 throw new MergeConflictException("Merged torrent list have different buffer identities.");
 
             var result = new TorrentList(this.Labels);
@@ -70,7 +70,7 @@ namespace UTorri
             var toStay = this.torrents.Union(other.torrents).Distinct().ToList();
             foreach (var torrent in toStay.ToArray())
             {
-                if (toRemove.Contains(torrent.Checksum))
+                if (toRemove.Contains(torrent.Hash))
                     toStay.Remove(torrent);
             }
             result.torrents = toStay;
@@ -115,13 +115,13 @@ namespace UTorri
         public IEnumerator<Torrent> GetEnumerator()
         {
             return torrents
-                .Where(x => !removedTorrentsChecksums.Contains(x.Checksum)).GetEnumerator();
+                .Where(x => !removedTorrentsChecksums.Contains(x.Hash)).GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return torrents
-                .Where(x => !removedTorrentsChecksums.Contains(x.Checksum)).GetEnumerator();
+                .Where(x => !removedTorrentsChecksums.Contains(x.Hash)).GetEnumerator();
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace UTorri
             if (parsed.label.Any())
                 Labels = parsed.label.ToDictionary(x => x.First().ToString(),
                                                    x => int.Parse(x.Last().ToString()));
-            BufferIdentity = long.Parse(parsed.torrentc);
+            CacheId = long.Parse(parsed.torrentc);
             foreach (var torrent in parsed.torrents)
             {
                 torrents.Add(new Torrent(torrent));
@@ -162,7 +162,7 @@ namespace UTorri
         {
             var parsed = JsonConvert.DeserializeObject<TorrentListContinuationJson>(json);
             Build = parsed.build;
-            BufferIdentity = long.Parse(parsed.torrentc);
+            CacheId = long.Parse(parsed.torrentc);
             if (parsed.label.Any())
                 Labels = parsed.label.ToDictionary(x => x.First().ToString(),
                                                    x => int.Parse(x.Last().ToString()));

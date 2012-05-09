@@ -12,7 +12,7 @@ namespace UTorri.Commands
             : base(action, CommandType.Action)
         {
             Parameters = torrents
-                .Select(t => new KeyValuePair<string, string>("hash", t.Checksum));
+                .Select(t => new KeyValuePair<string, string>("hash", t.Hash));
         }
     }
 

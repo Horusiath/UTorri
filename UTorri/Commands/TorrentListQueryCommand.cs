@@ -25,9 +25,9 @@ namespace UTorri.Commands
         /// </summary>
         /// <param name="list">List object, on which conntinuation request will be based.</param>
         public TorrentListQueryCommand(TorrentList list): base(ListQuery, CommandType.List, 
-                new KeyValuePair<string, string>("cid",list.BufferIdentity.ToString()))
+                new KeyValuePair<string, string>("cid",list.CacheId.ToString()))
         {
-            ContinuationListIdentity = list.BufferIdentity;
+            ContinuationListIdentity = list.CacheId;
         }
     }
 }

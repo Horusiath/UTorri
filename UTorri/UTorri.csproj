@@ -70,7 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestResult.cs" />
     <Compile Include="StandardExtensions.cs" />
-    <Compile Include="TaskProperties.cs" />
+    <Compile Include="TorrentJobProperties.cs" />
     <Compile Include="Torrent.cs" />
     <Compile Include="TorrentFile.cs" />
     <Compile Include="TorrentList.cs" />
