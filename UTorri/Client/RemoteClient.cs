@@ -38,6 +38,11 @@ namespace UTorri.Client
         /// </summary>
         public event RemoteClientResponseHandler ConnectionOpened;
 
+        /// <summary>
+        /// Event fired on http response received.
+        /// </summary>
+        public event RemoteClientResponseHandler ResponseArrived;
+
         #region Constructors
 
         /// <summary>
@@ -84,7 +89,7 @@ namespace UTorri.Client
             Connection.OpenAsync(()=>
             {
                 if (Connection.IsInitialized && ConnectionOpened != null)
-                    ConnectionOpened(this, new RemoteClientResponseEventArgs(Connection.Token));
+                    ConnectionOpened(this, new RemoteClientResponseEventArgs(Connection.Token, null));
             });
         }
 
@@ -100,6 +105,7 @@ namespace UTorri.Client
             Connection.GetAsync(command,(json)=>
             {
                 var res = ResponseFactory.Get<TorrentList>(json);
+                HandleResponse(json, res);
                 callback(res);
             });
         }
@@ -115,6 +121,7 @@ namespace UTorri.Client
             Connection.GetAsync(command, (json)=>
             {
                 var res = ResponseFactory.Get<TorrentList>(json);
+                HandleResponse(json, res);
                 callback(res);
             });
         }
@@ -130,6 +137,7 @@ namespace UTorri.Client
             Connection.GetAsync(command, (json)=>
                                              {
                                                  var res = ResponseFactory.Get<TorrentFileList>(json);
+                                                 HandleResponse(json, res);
                                                  callback(res);
                                              });
         }
@@ -146,6 +154,7 @@ namespace UTorri.Client
             Connection.GetAsync(command, (json)=>
             {
                 var res = ResponseFactory.Get<TorrentJobProperties>(json);
+                HandleResponse(json, res);
                 callback(res);
             });
         }
@@ -251,6 +260,20 @@ namespace UTorri.Client
         {
             var command = new AddQueryCommand(fileName, fileContent);
             Connection.UploadTorrentAsync(command);
+        }
+
+        /// <summary>
+        /// Handle response and fire event.
+        /// </summary>
+        /// <param name="json">Raw response string.</param>
+        /// <param name="res">Parsed request result object.</param>
+        private void HandleResponse<T>(string json, T res) where T: RequestResult
+        {
+            if (ResponseArrived != null)
+            {
+                var args = new RemoteClientResponseEventArgs(res, json);
+                ResponseArrived(this, args);
+            }
         }
 
         #endregion

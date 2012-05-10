@@ -12,9 +12,15 @@ namespace UTorri.Client
         /// </summary>
         public object Result { get; private set; }
 
-        public RemoteClientResponseEventArgs(object result)
+        /// <summary>
+        /// Raw responses data as json string.
+        /// </summary>
+        public string RawData { get; set; }
+
+        public RemoteClientResponseEventArgs(object result, string raw)
         {
             Result = result;
+            RawData = raw;
         }
     }
 }
