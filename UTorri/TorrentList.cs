@@ -182,31 +182,31 @@ namespace UTorri
         /// <summary>
         /// Helper class for parsing new JSON objects.
         /// </summary>
-        internal class TorrentListJson
+        public class TorrentListJson
         {
-            internal int build;
+            public int build;
 
-            internal ICollection<ICollection<object>> label;
+            public ICollection<ICollection<object>> label;
 
-            internal ICollection<ICollection<object>> torrents;
+            public ICollection<ICollection<object>> torrents;
 
-            internal string torrentc;
+            public string torrentc;
         }
 
         /// <summary>
         /// Helper class for parsing continuated JSON objects.
         /// </summary>
-        internal class TorrentListContinuationJson
+        public class TorrentListContinuationJson
         {
-            internal int build;
+            public int build;
 
-            internal ICollection<ICollection<object>> label;
+            public ICollection<ICollection<object>> label;
 
-            internal ICollection<ICollection<object>> torrentp;
+            public ICollection<ICollection<object>> torrentp;
 
-            internal ICollection<string> torrentm;
+            public ICollection<string> torrentm;
 
-            internal string torrentc;
+            public string torrentc;
         }
 
         #endregion
