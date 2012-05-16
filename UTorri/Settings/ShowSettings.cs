@@ -1,15 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-
-namespace UTorri.Settings
+﻿namespace UTorri.Settings
 {
     /// <summary>
     /// Data visualisation oriented settings container.
@@ -196,7 +185,8 @@ namespace UTorri.Settings
             }
         }
 
-        protected ShowSettings(ApplicationSettings parent) : base(parent)
+        protected internal ShowSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

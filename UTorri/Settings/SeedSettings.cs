@@ -77,7 +77,8 @@
             }
         }
 
-        protected SeedSettings(ApplicationSettings parent) : base(parent)
+        protected internal SeedSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

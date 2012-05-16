@@ -5,7 +5,8 @@
     /// </summary>
     public class GuiSettings : SettingsBase
     {
-        protected GuiSettings(ApplicationSettings parent) : base(parent)
+        protected internal GuiSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

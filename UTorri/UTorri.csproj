@@ -68,10 +68,11 @@
     <Compile Include="Settings\AppSettingsKeys.cs" />
     <Compile Include="Settings\BitTorrentSettings.cs" />
     <Compile Include="Settings\DirectorySettings.cs" />
+    <Compile Include="Settings\DiskIOSettings.cs" />
     <Compile Include="Settings\GuiSettings.cs" />
     <Compile Include="Settings\ISettings.cs" />
     <Compile Include="Settings\IspSettings.cs" />
-    <Compile Include="Settings\MultidaySettings.cs" />
+    <Compile Include="Settings\MultidayTransferSettings.cs" />
     <Compile Include="Settings\NetSettings.cs" />
     <Compile Include="Settings\PeerSettings.cs" />
     <Compile Include="Settings\QueueSettings.cs" />

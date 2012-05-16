@@ -162,7 +162,8 @@
         }
 
 
-        protected DirectorySettings(ApplicationSettings parent) : base(parent)
+        protected internal DirectorySettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

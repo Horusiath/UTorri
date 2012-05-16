@@ -54,7 +54,8 @@
             }
         }
 
-        protected StreamingSettings(ApplicationSettings parent) : base(parent)
+        protected internal StreamingSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

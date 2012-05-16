@@ -77,7 +77,8 @@
             }
         }
 
-        protected SchedulingSettings(ApplicationSettings parent) : base(parent)
+        protected internal SchedulingSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

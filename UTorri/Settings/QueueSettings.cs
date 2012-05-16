@@ -76,7 +76,7 @@
                 _parent[AppSettingsKeys.queueSlowUploadTreshold] = value;
             }
         }
-        protected QueueSettings(ApplicationSettings parent) : base(parent)
+        protected internal QueueSettings(ApplicationSettings parent) : base(parent)
         {
         }
     }

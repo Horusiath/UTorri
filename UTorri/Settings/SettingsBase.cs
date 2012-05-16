@@ -1,15 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-
-namespace UTorri.Settings
+﻿namespace UTorri.Settings
 {
     /// <summary>
     /// Base class for other settings classes.
@@ -18,7 +7,7 @@ namespace UTorri.Settings
     {
         protected ApplicationSettings _parent;
 
-        protected SettingsBase(ApplicationSettings parent)
+        protected internal SettingsBase(ApplicationSettings parent)
         {
             _parent = parent;
         }

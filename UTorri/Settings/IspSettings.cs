@@ -89,7 +89,8 @@
             }
         }
 
-        protected IspSettings(ApplicationSettings parent) : base(parent)
+        protected internal IspSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }

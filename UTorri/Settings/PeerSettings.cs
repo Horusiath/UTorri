@@ -53,7 +53,8 @@
             }
         }
 
-        public PeerSettings(ApplicationSettings parent) : base(parent)
+        protected internal PeerSettings(ApplicationSettings parent)
+            : base(parent)
         {
         }
     }
