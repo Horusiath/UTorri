@@ -24,6 +24,7 @@
         public const string webuiGuest = "webui.guest";
         public const string webuiRestrict = "webui.restrict";
         public const string webuiCookie = "webui.cookie";
+        public const string webuiPort = "webui.port";
         public const string webuiUconnectToolbarEver = "webui.uconnect_toolbar_ever";
         public const string webuiUconnectEnableEver = "webui.uconnect_enable_ever";
         public const string webuiUconnectConnectedEver = "webui.uconnect_connected_ever";

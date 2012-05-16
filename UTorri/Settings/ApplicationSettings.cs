@@ -165,7 +165,7 @@ namespace UTorri.Settings
                 case 0:
                     value = int.Parse(array[2].ToString()); break;
                 case 1:
-                    value = array[2].ToString() == "0" ? false : true; break;
+                    value = bool.Parse(array[2].ToString()); break;
                 case 2:
                     value = array[2].ToString();break;
             }
