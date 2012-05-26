@@ -51,6 +51,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AppSettingsQueryCommand.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Client\RequestResultFactory.cs" />
     <Compile Include="Client\RemoteClient.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Connection\TokenException.cs" />
     <Compile Include="Settings\AppSettingsKeys.cs" />
     <Compile Include="Settings\BitTorrentSettings.cs" />
+    <Compile Include="Settings\CacheSettings.cs" />
     <Compile Include="Settings\DirectorySettings.cs" />
     <Compile Include="Settings\DiskIOSettings.cs" />
     <Compile Include="Settings\GuiSettings.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Settings\MultidayTransferSettings.cs" />
     <Compile Include="Settings\NetSettings.cs" />
     <Compile Include="Settings\PeerSettings.cs" />
+    <Compile Include="Settings\ProxySettings.cs" />
     <Compile Include="Settings\QueueSettings.cs" />
     <Compile Include="Settings\SeedSettings.cs" />
     <Compile Include="Settings\SettingsBase.cs" />

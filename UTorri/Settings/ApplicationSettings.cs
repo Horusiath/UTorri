@@ -23,77 +23,87 @@ namespace UTorri.Settings
         /// <summary>
         /// Queueing oriented settings.
         /// </summary>
-        public QueueSettings Queue { get; private set; }
+        public QueueSettings Queue { get; protected set; }
 
         /// <summary>
         /// Disk input/output oriented settings.
         /// </summary>
-        public DiskIOSettings DiskIO { get; set; }
+        public DiskIOSettings DiskIO { get; protected set; }
 
         /// <summary>
         /// Seeds oriented settings.
         /// </summary>
-        public SeedSettings Seed { get; set; }
+        public SeedSettings Seed { get; protected set; }
 
         /// <summary>
         /// Peers oriented settings.
         /// </summary>
-        public PeerSettings Peer { get; set; }
+        public PeerSettings Peer { get; protected set; }
 
         /// <summary>
         /// Bit torrent protocol oriented settings.
         /// </summary>
-        public BitTorrentSettings BitTorrent { get; set; }
+        public BitTorrentSettings BitTorrent { get; protected set; }
 
         /// <summary>
         /// Net connection oriented settings.
         /// </summary>
-        public NetSettings Net { get; set; }
+        public NetSettings Net { get; protected set; }
 
         /// <summary>
         /// Statistics oriented settings.
         /// </summary>
-        public StatsSettings Statistics { get; set; }
+        public StatsSettings Statistics { get; protected set; }
 
         /// <summary>
         /// uTorrent Graphic User Interface oriented settings.
         /// </summary>
-        public GuiSettings Gui { get; set; }
+        public GuiSettings Gui { get; protected set; }
 
         /// <summary>
         /// Internet service providing oriented settings.
         /// </summary>
-        public IspSettings Isp { get; set; }
+        public IspSettings Isp { get; protected set; }
 
         /// <summary>
         /// Scheduling oriented settings.
         /// </summary>
-        public SchedulingSettings Scheduling { get; set; }
+        public SchedulingSettings Scheduling { get; protected set; }
 
         /// <summary>
         /// Data display oriented settings.
         /// </summary>
-        public ShowSettings Show { get; set; }
+        public ShowSettings Show { get; protected set; }
 
         /// <summary>
         /// uTorrent Web UI oriented settings.
         /// </summary>
-        public WebuiSettings Webui { get; set; }
+        public WebuiSettings Webui { get; protected set; }
 
         /// <summary>
         /// Streaming oriented settings.
         /// </summary>
-        public StreamingSettings Streaming { get; set; }
+        public StreamingSettings Streaming { get; protected set; }
 
         /// <summary>
         /// Directory oriented settings.
         /// </summary>
-        public DirectorySettings Directory { get; set; }
+        public DirectorySettings Directory { get; protected set; }
 
         /// <summary>
         /// Transfer oriented settings.
         /// </summary>
-        public MultidayTransferSettings Transfer { get; set; }
+        public MultidayTransferSettings Transfer { get; protected set; }
+
+        /// <summary>
+        /// Caching oriented settings.
+        /// </summary>
+        public CacheSettings Cache { get; protected set; }
+
+        /// <summary>
+        /// Proxy oriented settings.
+        /// </summary>
+        public ProxySettings Proxy { get; protected set; }
 
         public ApplicationSettings()
         {
@@ -112,6 +122,8 @@ namespace UTorri.Settings
             Streaming = new StreamingSettings(this);
             Directory = new DirectorySettings(this);
             Transfer = new MultidayTransferSettings(this);
+            Proxy = new ProxySettings(this);
+            Cache = new CacheSettings(this);
         }
 
         public override void FromJson(string json)
